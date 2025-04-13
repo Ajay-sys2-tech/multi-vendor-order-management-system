@@ -108,9 +108,23 @@ Powered by MongoDB Aggregation Framework
 | POST |	/users/register | Register as customer or vendor or admin	| ❌ Public |
 | POST |	/users/login	| Login and receive JWT	| ❌ Public |
 | GET	 |  /products	    | List all products	 | ❌ Public |
-| vPOST |	/orders	        | Place order with multiple vendors |	✅ Customer |
-| GET  |	/api/analytics/vendor |	Vendor analytics	| ✅ Vendor |
-| GET	 |  /api/analytics/admin  |	Admin analytics	 | ✅ Admin |
+| GET    | /products/<productId>   | Get a product by ID | ❌ Public   |
+| POST   | /products               | Add a product       | ✅ Vendor   |
+| PUT    | /products/<productId>   | Update a product    | ✅ Vendor   |
+| DELETE | /products/<productId>   | Delete a product    | ✅ Vendor   |
+| GET    | /carts                | Get cart items                                           | ✅ Customer  |
+| POST   | /carts/<productId>    | Add product to cart                                      | ✅ Customer  |
+| PATCH  | /carts/<cartId>       | Update quantity of a product (use `remove: true` to reduce) | ✅ Customer  |
+| DELETE | /carts/<cartId>       | Delete a cart                                            | ✅ Customer  |
+| GET    | /orders?orderStatus=created               | Get customer orders(created/dispatched/delivered)                   | ✅ Customer |
+| GET    | /orders/<orderId>      | Get order by ID                       | ✅ Customer |
+| POST   | /orders                | Create order from cart (checkout)     | ✅ Customer |
+| GET    | /orders/recieved?orderStatus=created      | Get received orders (vendor)          | ✅ Vendor   |
+| PUT    | /orders/<orderId>      | Update order status                   | ✅ Vendor   |
+| GET    | /admin/revenue            | Get vendor revenue for the last few days        | ✅ Admin   |
+| GET    | /admin/order-analysis?days=30&limit=5     | Get top product by sales & average order value  | ✅ Admin   |
+| GET    | /vendor/sales?days=7         | Get daily sales for last X days     | ✅ Vendor  |
+| GET    | /vendor/low-stock?maxStock=10    | Get low stock items                 | ✅ Vendor  |
 
 🧰 Environment Variables
 Copy .env.example to .env and update values as needed

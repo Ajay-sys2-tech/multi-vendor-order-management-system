@@ -85,7 +85,5 @@ router.delete("/:cartId", customerAuth, async (req, res) => {
 })
 
 
-//change quantity of a product in cart
-
 
 module.exports = router;
