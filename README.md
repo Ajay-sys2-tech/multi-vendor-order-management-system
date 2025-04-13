@@ -6,20 +6,20 @@ A scalable and modular Node.js + Express API for managing a multi-vendor e-comme
 
 🔒 Secure Authentication & Role Management  
 
-    JWT-based authentication with role-based access control (Admin, Vendor, Customer)
+- JWT-based authentication with role-based access control (Admin, Vendor, Customer)
 
-    Bcrypt password hashing for enhanced security
+- Bcrypt password hashing for enhanced security
 
-    Session management and token refresh
+- Session management and token refresh
 
 🏪 Vendor Management Suite
-    Complete vendor onboarding workflow
+- Complete vendor onboarding workflow
 
-    Product catalog management (CRUD operations)
+- Product catalog management (CRUD operations)
 
-    Real-time inventory tracking
+- Real-time inventory tracking
 
-    Vendor performance dashboard
+- Vendor performance dashboard
 
 🚀 Order Processing Engine
     Atomic order creation with MongoDB transactions
