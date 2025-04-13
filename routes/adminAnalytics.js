@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 //Revenue per vendor (past 30 days)
-router.get("/revenue", async (req, res) => {
+router.get("/revenue", adminAuth, async (req, res) => {
     try {
         const revenue = await getRevenuePerVendor();
         res.status(200).json({revenue});
@@ -18,7 +18,7 @@ router.get("/revenue", async (req, res) => {
 
 // Top 5 products by sales
 // Average order value
-router.get("/orderAnalysis", async (req, res) => {
+router.get("/order-analysis", adminAuth, async (req, res) => {
     const {days=30, limit=5 } = req.query;
     try {
         const topProducts = await getTopProductsBySales(parseInt(days), parseInt(limit));
