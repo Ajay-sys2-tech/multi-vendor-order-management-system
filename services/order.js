@@ -233,9 +233,9 @@ const createOrder = async (userId) => {
     }
 };
 
-const getOrders = async (userId) => {
+const getOrders = async (userId, orderStatus) => {
     try {
-        const orderItems = await getOrderItemsRepo(userId);
+        const orderItems = await getOrderItemsRepo(userId, orderStatus);
         const orderSummary = orderItems.reduce((obj, item) => {
             obj.totalPrice += item.subTotal; 
             obj.totalQuantity += item.subQuantity;

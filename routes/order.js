@@ -6,8 +6,6 @@ const { customerAuth, vendorAuth } = require("../middlewares/auth");
 const router = express.Router();
 
 
-
-
 //get orders by vendors
 router.get("/recieved", vendorAuth, async (req, res) => {
     const vendorId = req.user.id;
@@ -29,12 +27,12 @@ router.get("/recieved", vendorAuth, async (req, res) => {
 
 
 //get orders 
-
 router.get("/", customerAuth, async (req, res) => {
     const userId = req.user.id;
+    const { orderStatus="created" } = req.query;
     try {
-        const orders = await getOrders(userId);
-        if(orders.length === 0){
+        const orders = await getOrders(userId, orderStatus );
+        if(orders.orderItems.length === 0){
             return res.status(404).json({message: "No orders found"});
         }
 

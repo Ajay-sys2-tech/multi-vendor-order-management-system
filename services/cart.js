@@ -27,9 +27,7 @@ const addToCart = async ( productId, userId, quantity ) => {
         // if product is already in the cart just add the quantity
         const itemExistInCart = await getCartItemByProductIdRepo(productId, userId);
         if(itemExistInCart){
-            console.log(itemExistInCart);
             const updatedCart = await updateCartRepo(itemExistInCart._id, quantity);
-            console.log(updatedCart);
             return updatedCart;
         }
 
@@ -45,11 +43,9 @@ const addToCart = async ( productId, userId, quantity ) => {
 const updateCart = async (cartId, userId, quantity, remove=false) => {
     try {
         const updatedCart = await updateCartRepo(cartId, userId, remove ? -quantity : quantity);
-        console.log(updatedCart);
 
         if(updatedCart && updatedCart.quantity <= 0){
             const removedCart = await removeFromCart(cartId, userId);
-            console.log(removedCart);
             return removedCart;
         }
 

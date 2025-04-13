@@ -35,7 +35,6 @@ const updateProductRepo = async (productId, valueToUpdate) => {
             valueToUpdate, 
             {new: true}
         );
-        console.log(updatedProduct);
         return updatedProduct;
     } catch (error) {
         throw error;
@@ -45,7 +44,6 @@ const updateProductRepo = async (productId, valueToUpdate) => {
 const deleteProductRepo = async (productId) => {
     try {
         const deletedProduct = await Product.findByIdAndDelete(productId);
-        console.log(deletedProduct);
         return deletedProduct;
     } catch (error) {
         throw error;

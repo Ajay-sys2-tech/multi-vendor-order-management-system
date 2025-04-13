@@ -29,7 +29,7 @@ const getOrderItemByIdRepo = async (orderId) => {
 }
 
 
-const getOrderItemsRepo = async (userId) => {
+const getOrderItemsRepo = async (userId, orderStatus) => {
     try {
         
         const orderItems = await Order.aggregate([
@@ -37,7 +37,7 @@ const getOrderItemsRepo = async (userId) => {
             {
             $match: {
                 userId: new mongoose.Types.ObjectId(userId),
-                status: "created"
+                status: orderStatus
             }
             },
         
@@ -90,9 +90,7 @@ const getOrderItemsRepo = async (userId) => {
 
 const changeOrderStatusRepo = async (orderId, vendorId, status) => {
     try {
-        // const updatedOrder = await Order.findByIdAndUpdate(orderId, {status}, {new: true});
         const updatedOrder = await Order.findOneAndUpdate({ _id: new mongoose.Types.ObjectId(orderId), vendorId}, {status}, {new: true});
-        console.log(updatedOrder);
         return updatedOrder;
     } catch (error) {
         throw error;
@@ -153,8 +151,6 @@ const getRevenueRepo = async () => {
                 }
             }
         ]);
-
-        console.log(revenue);
 
         return revenue;
     } catch (error) {

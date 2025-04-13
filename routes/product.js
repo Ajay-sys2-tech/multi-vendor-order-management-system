@@ -69,7 +69,6 @@ router.put("/:id",vendorAuth, validate(updateProductSchema), async (req, res) =>
                 .filter(([key, value]) => value && value !== '')
         );
 
-        console.log(valueToUpdate);
         const updatedProduct = await updateProduct(productId, valueToUpdate);
         res.status(200).json({
             message: "Product updated", 
