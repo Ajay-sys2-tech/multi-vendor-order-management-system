@@ -60,17 +60,29 @@ Docker Compose
 
 🐳 Docker Setup (Recommended)
 Clone the repository
-
+```bash
 git clone https://github.com/Ajay-sys2-tech/multi-vendor-order-management-system.git
 cd multi-vendor-order-management-system
-Start the services
+```
 
+Start the services
+```bash
 docker-compose up --build
+```
+
+Local Setup
+```bash
+npm install
+npm start
+```
+
 API will be running at:
 http://localhost:4000
 
 🧪 Run Tests
+```bash
 npm run test
+```
 
 🔐 Roles & Access
 Role	Capabilities
@@ -93,8 +105,8 @@ Powered by MongoDB Aggregation Framework
 Method	Endpoint	Description	Auth
 POST	/users/register	Register as customer or vendor or admin	❌ Public
 POST	/users/login	Login and receive JWT	❌ Public
-GET	/products	List all products	❌ Public
-POST	/api/orders	Place order with multiple vendors	✅ Customer
+GET	    /products	List all products	❌ Public
+POST	/orders	Place order with multiple vendors	✅ Customer
 GET	/api/analytics/vendor	Vendor analytics	✅ Vendor
 GET	/api/analytics/admin	Admin analytics	✅ Admin
 
