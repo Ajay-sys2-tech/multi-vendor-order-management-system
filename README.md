@@ -75,7 +75,7 @@ Local Setup
 npm install
 npm start
 ```
-`npm start`
+
 API will be running at:
 http://localhost:4000
 
@@ -103,7 +103,8 @@ Per-vendor order performance
 Powered by MongoDB Aggregation Framework
 
 📬 API Endpoints (Partial Overview)
-Method	Endpoint	Description	Auth
+| Method     | Endpoint                           |	Description	                       | Auth   |
+|------------|------------------------------------|------------------------------------|--------|
 POST	/users/register	Register as customer or vendor or admin	❌ Public
 POST	/users/login	Login and receive JWT	❌ Public
 GET	    /products	List all products	❌ Public
