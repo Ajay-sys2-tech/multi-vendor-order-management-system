@@ -6,47 +6,49 @@ A scalable and modular Node.js + Express API for managing a multi-vendor e-comme
 
 🔒 Secure Authentication & Role Management  
 
-JWT-based authentication with role-based access control (Admin, Vendor, Customer)
+    JWT-based authentication with role-based access control (Admin, Vendor, Customer)
 
-Bcrypt password hashing for enhanced security
+    Bcrypt password hashing for enhanced security
 
-Session management and token refresh
+    Session management and token refresh
 
 🏪 Vendor Management Suite
-Complete vendor onboarding workflow
+    Complete vendor onboarding workflow
 
-Product catalog management (CRUD operations)
+    Product catalog management (CRUD operations)
 
-Real-time inventory tracking
+    Real-time inventory tracking
 
-Vendor performance dashboard
+    Vendor performance dashboard
 
 🚀 Order Processing Engine
-Atomic order creation with MongoDB transactions
+    Atomic order creation with MongoDB transactions
 
-Automatic order splitting by vendor
+    Automatic order splitting by vendor
 
-Multi-vendor cart functionality
+    Multi-vendor cart functionality
 
-Order status tracking (Pending → Fulfilled → Completed)
+    Order status tracking (Pending → Fulfilled → Completed)
 
 📊 Advanced Analytics
-Real-time sales analytics for vendors and admins
+    Real-time sales analytics for vendors and admins
 
-Revenue tracking across multiple dimensions
+    Revenue tracking across multiple dimensions
 
-Product performance metrics
+    Product performance metrics
 
-Custom reporting capabilities
+    Custom reporting capabilities
 
 ⚙️ Operational Excellence
-Containerized deployment with Docker
+    Containerized deployment with Docker
 
-Schema validation with Zod
+    Schema validation with Zod
 
-Comprehensive error handling
+    Comprehensive error handling
 
-Automated testing suite
+    Automated testing suite  
+
+🛠️ Technology Stack
 
 | Component         | Technology                | Purpose                          |
 |------------------|---------------------------|----------------------------------|
@@ -80,10 +82,10 @@ multi-vendor-order-management/
 ```
 
 ⚙️ Getting Started
-Prerequisites
-Node.js
-Docker
-Docker Compose
+    Prerequisites
+    Node.js
+    Docker
+    Docker Compose
 
 🐳 Docker Setup (Recommended)
 Clone the repository
@@ -121,15 +123,15 @@ npm run test
 
 
 📊 Analytics Features
-Total revenue by vendor or platform-wide
+    Total revenue by vendor or platform-wide
 
-Top-selling products
+    Top-selling products
 
-Order volume trends
+    Order volume trends
 
-Per-vendor order performance
+    Per-vendor order performance
 
-Powered by MongoDB Aggregation Framework
+    Powered by MongoDB Aggregation Framework
 
 📬 API Endpoints (Partial Overview)
 | Method     | Endpoint                           |	Description	                       | Auth   |
@@ -155,13 +157,16 @@ Powered by MongoDB Aggregation Framework
 | GET    | /vendor/sales?days=7         | Get daily sales for last X days     | ✅ Vendor  |
 | GET    | /vendor/low-stock?maxStock=10    | Get low stock items                 | ✅ Vendor  |
 
-🧰 Environment Variables
-Copy .env.example to .env and update values as needed
+🧰 Environment Variables  
 
-🙌 Contributions
-Contributions, issues, and feature requests are welcome!
-Feel free to open a pull request.
+    Copy .env.example to .env and update values as needed
 
-📄 License
-This project is licensed under the MIT License.
+🙌 Contributions  
+
+    Contributions, issues, and feature requests are welcome!
+    Feel free to open a pull request.
+
+📄 License  
+
+    This project is licensed under the MIT License.
 
