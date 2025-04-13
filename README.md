@@ -105,12 +105,12 @@ Powered by MongoDB Aggregation Framework
 📬 API Endpoints (Partial Overview)
 | Method     | Endpoint                           |	Description	                       | Auth   |
 |------------|------------------------------------|------------------------------------|--------|
-POST	/users/register	Register as customer or vendor or admin	❌ Public
-POST	/users/login	Login and receive JWT	❌ Public
-GET	    /products	List all products	❌ Public
-POST	/orders	Place order with multiple vendors	✅ Customer
-GET	/api/analytics/vendor	Vendor analytics	✅ Vendor
-GET	/api/analytics/admin	Admin analytics	✅ Admin
+| POST |	/users/register | Register as customer or vendor or admin	| ❌ Public |
+| POST |	/users/login	| Login and receive JWT	| ❌ Public |
+| GET	 |  /products	    | List all products	 | ❌ Public |
+| vPOST |	/orders	        | Place order with multiple vendors |	✅ Customer |
+| GET  |	/api/analytics/vendor |	Vendor analytics	| ✅ Vendor |
+| GET	 |  /api/analytics/admin  |	Admin analytics	 | ✅ Admin |
 
 🧰 Environment Variables
 Copy .env.example to .env and update values as needed
