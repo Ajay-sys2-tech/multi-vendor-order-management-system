@@ -1,5 +1,5 @@
 
-FROM node:22.14.0
+FROM node:22-slim
 
 WORKDIR /usr/src/app
 
@@ -10,7 +10,6 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-# Expose the port your app runs on (default is 3000)
 EXPOSE 4000
 
 # Start the app

@@ -8,7 +8,11 @@ services:
     ports:
       - "4000:4000"  # Expose Express app to localhost
     environment:
-      - PORT=4000
+      - PORT=${PORT}
+      - DB_URL=${DB_URL}
+      - JWT_CUSTOMER_SECRET=${JWT_CUSTOMER_SECRET}
+      - JWT_VENDOR_SECRET=${JWT_VENDOR_SECRET}
+      - JWT_ADMIN_SECRET=${JWT_ADMIN_SECRET}
     networks:
       - app-network
 
