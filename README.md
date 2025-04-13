@@ -22,31 +22,31 @@ A scalable and modular Node.js + Express API for managing a multi-vendor e-comme
 - Vendor performance dashboard
 
 🚀 Order Processing Engine
-    Atomic order creation with MongoDB transactions
+- Atomic order creation with MongoDB transactions
 
-    Automatic order splitting by vendor
+- Automatic order splitting by vendor
 
-    Multi-vendor cart functionality
+- Multi-vendor cart functionality
 
-    Order status tracking (Pending → Fulfilled → Completed)
+- Order status tracking (Pending → Fulfilled → Completed)
 
 📊 Advanced Analytics
-    Real-time sales analytics for vendors and admins
+- Real-time sales analytics for vendors and admins
 
-    Revenue tracking across multiple dimensions
+- Revenue tracking across multiple dimensions
 
-    Product performance metrics
+- Product performance metrics
 
-    Custom reporting capabilities
+- Custom reporting capabilities
 
 ⚙️ Operational Excellence
-    Containerized deployment with Docker
+- Containerized deployment with Docker
 
-    Schema validation with Zod
+- Schema validation with Zod
 
-    Comprehensive error handling
+- Comprehensive error handling
 
-    Automated testing suite  
+- Automated testing suite  
 
 🛠️ Technology Stack
 
@@ -82,10 +82,10 @@ multi-vendor-order-management/
 ```
 
 ⚙️ Getting Started
-    Prerequisites
-    Node.js
-    Docker
-    Docker Compose
+- Prerequisites
+- Node.js
+- Docker
+- Docker Compose
 
 🐳 Docker Setup (Recommended)
 Clone the repository
@@ -123,17 +123,17 @@ npm run test
 
 
 📊 Analytics Features
-    Total revenue by vendor or platform-wide
+- Total revenue by vendor or platform-wide
 
-    Top-selling products
+- Top-selling products
 
-    Order volume trends
+- Order volume trends
 
-    Per-vendor order performance
+- Per-vendor order performance
 
-    Powered by MongoDB Aggregation Framework
+- Powered by MongoDB Aggregation Framework
 
-📬 API Endpoints (Partial Overview)
+📬 API Endpoints
 | Method     | Endpoint                           |	Description	                       | Auth   |
 |------------|------------------------------------|------------------------------------|--------|
 | POST |	/users/register | Register as customer or vendor or admin	| ❌ Public |
@@ -159,14 +159,14 @@ npm run test
 
 🧰 Environment Variables  
 
-    Copy .env.example to .env and update values as needed
+- Copy .env.example to .env and update values as needed
 
 🙌 Contributions  
 
-    Contributions, issues, and feature requests are welcome!
-    Feel free to open a pull request.
+- Contributions, issues, and feature requests are welcome!
+- Feel free to open a pull request.
 
 📄 License  
 
-    This project is licensed under the MIT License.
+- This project is licensed under the MIT License.
 
