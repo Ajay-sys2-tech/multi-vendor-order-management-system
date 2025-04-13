@@ -75,11 +75,12 @@ Local Setup
 npm install
 npm start
 ```
-
+`npm start`
 API will be running at:
 http://localhost:4000
 
 🧪 Run Tests
+
 ```bash
 npm run test
 ```
