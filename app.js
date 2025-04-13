@@ -6,8 +6,6 @@ const orderRoutes = require("./routes/order");
 const adminRoutes = require("./routes/adminAnalytics");
 const vendorRoutes = require("./routes/vendorAnalytics");
 const app = express();
-const PORT = process.env.PORT || 8080;
-console.log(PORT);
 
 app.use(express.json());
 
@@ -21,10 +19,6 @@ app.use("/carts", cartRoutes);
 app.use("/orders", orderRoutes);
 app.use("/admin", adminRoutes);
 app.use("/vendor", vendorRoutes);
-
-// app.listen(4000, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// })
 
 
 module.exports = app;
