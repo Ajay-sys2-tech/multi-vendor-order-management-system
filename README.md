@@ -1,56 +1,83 @@
-🛍️ Multi-Vendor Order Management System API
+🛍️ Multi-Vendor Order Management System API  
+
 A scalable and modular Node.js + Express API for managing a multi-vendor e-commerce platform. This backend service handles vendor onboarding, customer orders, order splitting, and real-time analytics for vendors and administrators.
 
-Built with: Node.js, Express, MongoDB, Docker, JWT, Mongoose, Zod
+🌟 Key Features  
 
-🚀 Features
-🔐 Authentication & RBAC
-Supports Admin, Vendor, and Customer roles with secure JWT-based authentication and route-level authorization.
+🔒 Secure Authentication & Role Management  
 
-🧑‍💼 Vendor Portal
-Vendors can manage their products, view performance analytics, and track order fulfillment.
+JWT-based authentication with role-based access control (Admin, Vendor, Customer)
 
-🛒 Customer Orders
-Customers can place orders across multiple vendors in a single checkout. Orders are automatically split per vendor.
+Bcrypt password hashing for enhanced security
 
-🧾 Order Management
-Order creation uses MongoDB transactions to ensure atomic updates to inventory and order records.
+Session management and token refresh
 
-📊 Analytics Dashboards
-Aggregated statistics for Admins and Vendors to track revenue, top-selling products, and order trends.
+🏪 Vendor Management Suite
+Complete vendor onboarding workflow
 
-🧩 Clean and Modular Architecture
-Follows a scalable folder structure with reusable services, middlewares, and models.
+Product catalog management (CRUD operations)
 
-🐳 Dockerized Environment
-Easily spin up the API and database using Docker and Docker Compose.
+Real-time inventory tracking
 
-🛠️ Tech Stack
-Tool/Library	Purpose
-Node.js + Express	Backend server and routing
-MongoDB + Mongoose	NoSQL database and ODM
-JWT	Stateless authentication
-Bcrypt	Password hashing
-Zod	Schema validation
-Docker	Containerization & easy setup
-MongoDB Transactions	Atomic operations on orders and inventory
+Vendor performance dashboard
+
+🚀 Order Processing Engine
+Atomic order creation with MongoDB transactions
+
+Automatic order splitting by vendor
+
+Multi-vendor cart functionality
+
+Order status tracking (Pending → Fulfilled → Completed)
+
+📊 Advanced Analytics
+Real-time sales analytics for vendors and admins
+
+Revenue tracking across multiple dimensions
+
+Product performance metrics
+
+Custom reporting capabilities
+
+⚙️ Operational Excellence
+Containerized deployment with Docker
+
+Schema validation with Zod
+
+Comprehensive error handling
+
+Automated testing suite
+
+| Component         | Technology                | Purpose                          |
+|------------------|---------------------------|----------------------------------|
+| Runtime          | Node.js                   | JavaScript execution environment |
+| Framework        | Express.js                | API routing and middleware       |
+| Database         | MongoDB                   | NoSQL data storage               |
+| ORM/ODM          | Mongoose                  | MongoDB object modeling          |
+| Authentication   | JWT + Bcrypt              | Secure user authentication       |
+| Validation       | Zod                       | Request/response validation      |
+| Containerization | Docker + Docker Compose   | Environment standardization      |
+| Transactions     | MongoDB Transactions      | Atomic operations                |
+
+
 📦 Project Structure
-
-
-├── db
-├── models
-├── routes
-├── middlewares
-├── repositories
-├── services
-├── utils
-├── schema
-├── __tests__
-├── .env
-├── app.js
-├── Dockerfile
-├── docker-compose.yml
-└── index.js
+```
+multi-vendor-order-management/
+├── db/                  # Database connection setup
+├── models/              # MongoDB schemas and models
+├── routes/              # API endpoint definitions
+├── middlewares/         # Custom Express middleware
+├── repositories/        # Data access layer
+├── services/            # Business logic layer
+├── utils/               # Helper functions and utilities
+├── schema/              # Validation schemas
+├── tests/               # Test suites
+├── .env                 # Environment configuration
+├── app.js               # Express application setup
+├── Dockerfile           # Container configuration
+├── docker-compose.yml   # Service orchestration
+└── index.js             # Application entry point
+```
 
 ⚙️ Getting Started
 Prerequisites
@@ -86,10 +113,12 @@ npm run test
 ```
 
 🔐 Roles & Access
-Role	Capabilities
-Admin	Manage users & vendors, view full analytics
-Vendor	Manage own products, view vendor-specific sales & product performance
-Customer	Browse products, place orders across multiple vendors
+| Role     | Capabilities                                                                 |
+|----------|------------------------------------------------------------------------------|
+| Admin    | Manage users & vendors, view full analytics                                  |
+| Vendor   | Manage own products, view vendor-specific sales & product performance        |
+| Customer | Browse products, place orders across multiple vendors                        |
+
 
 📊 Analytics Features
 Total revenue by vendor or platform-wide
@@ -116,7 +145,7 @@ Powered by MongoDB Aggregation Framework
 | POST   | /carts/{productId}    | Add product to cart                                      | ✅ Customer  |
 | PATCH  | /carts/{cartId}       | Update quantity of a product (use `remove: true` to reduce) | ✅ Customer  |
 | DELETE | /carts/{cartId}       | Delete a cart                                            | ✅ Customer  |
-| GET    | /orders?orderStatus=created               | Get customer orders(created/dispatched/delivered)                   | ✅ Customer |
+| GET    | /orders?orderStatus=created               | Get customer orders(`created/dispatched/delivered`)                   | ✅ Customer |
 | GET    | /orders/{orderId}      | Get order by ID                       | ✅ Customer |
 | POST   | /orders                | Create order from cart (checkout)     | ✅ Customer |
 | GET    | /orders/recieved?orderStatus=created      | Get received orders (vendor)          | ✅ Vendor   |
