@@ -9,10 +9,6 @@ services:
       - "4000:4000"  # Expose Express app to localhost
     environment:
       - PORT=4000
-      - DB_URL=mongodb+srv://kumarajaymdp700:sKZYSCeTbRjjdyvk@cluster0.y2jlnta.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-      - JWT_CUSTOMER_SECRET="thisiscustomersecret"
-      - JWT_VENDOR_SECRET="thisisvendorsecret"
-      - JWT_ADMIN_SECRET="thisisadminsecret"
     networks:
       - app-network
 
