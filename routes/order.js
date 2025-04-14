@@ -5,8 +5,36 @@ const { customerAuth, vendorAuth } = require("../middlewares/auth");
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * tags:
+ *  name: Order
+ * description: Order management
+ */
+/**
+ * @swagger
+ * /orders/recieved:
+ *   get:
+ *     summary: Get all orders for a vendor
+ *     tags: [Order]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *         required: false
+ *         description: The status of the order (created, shipped, delivered, etc.)
+ *     responses:
+ *       200:
+ *         description: A list of orders for the vendor
+ *       404:
+ *         description: No orders found for the vendor
+ *       500:
+ *         description: Internal server error
+ */
 
-//get orders by vendors
 router.get("/recieved", vendorAuth, async (req, res) => {
     const vendorId = req.user.id;
     const orderStatus = req.query.status ?? 'created';
@@ -25,8 +53,30 @@ router.get("/recieved", vendorAuth, async (req, res) => {
 } )
 
 
+/**
+ * @swagger
+ * /orders:
+ *   get:
+ *     summary: Get all orders for a customer
+ *     tags: [Order]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: orderStatus
+ *         schema:
+ *           type: string
+ *         required: false
+ *         description: The status of the order (created, shipped, delivered, etc.)
+ *     responses:
+ *       200:
+ *         description: A list of orders for the customer
+ *       404:
+ *         description: No orders found for the customer
+ *       500:
+ *         description: Internal server error
+ */
 
-//get orders 
 router.get("/", customerAuth, async (req, res) => {
     const userId = req.user.id;
     const { orderStatus="created" } = req.query;
@@ -43,7 +93,30 @@ router.get("/", customerAuth, async (req, res) => {
     }
 })
 
-//get order by id
+/**
+ * @swagger
+ * /orders/{orderId}:
+ *   get:
+ *     summary: Get an order by ID (Customer only)
+ *     tags: [Order]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: orderId
+ *         required: true
+ *         description: The ID of the order
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Order retrieved successfully
+ *       404:
+ *         description: Order not found
+ *       500:
+ *         description: Internal server error
+ */
+
 router.get("/:orderId", customerAuth, async (req, res) => {
     const orderId = req.params.orderId;
     try {
@@ -59,8 +132,23 @@ router.get("/:orderId", customerAuth, async (req, res) => {
     }
 })
 
+/**
+ * @swagger
+ * /orders:
+ *   post:
+ *     summary: Create a new order (Customer only)
+ *     tags: [Order]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       201:
+ *         description: Order created successfully
+ *       404:
+ *         description: No items in the cart to create an order
+ *       500:
+ *         description: Internal server error
+ */
 
-//create an order from the cart
 router.post('/', customerAuth, async (req, res) => {
     const userId = req.user.id;
     try {
@@ -77,6 +165,40 @@ router.post('/', customerAuth, async (req, res) => {
 });
 
 //update order status, only the product owner should be able to do this
+/**
+ * @swagger
+ * /orders/{orderId}:
+ *   put:
+ *     summary: Update order status (Vendor only)
+ *     tags: [Order]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: orderId
+ *         required: true
+ *         description: The ID of the order to update
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 example: shipped
+ *     responses:
+ *       200:
+ *         description: Order status updated successfully
+ *       404:
+ *         description: Order not found
+ *       500:
+ *         description: Internal server error
+ */
+
 router.put("/:orderId", vendorAuth, async (req, res) => {
     const orderId = req.params.orderId;
     const status = req.body.status;

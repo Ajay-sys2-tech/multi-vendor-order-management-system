@@ -5,6 +5,10 @@ const cartRoutes = require("./routes/cart");
 const orderRoutes = require("./routes/order");
 const adminRoutes = require("./routes/adminAnalytics");
 const vendorRoutes = require("./routes/vendorAnalytics");
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swaggerConfig');
+
 const app = express();
 
 app.use(express.json());
@@ -19,6 +23,8 @@ app.use("/carts", cartRoutes);
 app.use("/orders", orderRoutes);
 app.use("/admin", adminRoutes);
 app.use("/vendor", vendorRoutes);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 module.exports = app;
