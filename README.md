@@ -80,6 +80,13 @@ multi-vendor-order-management/
 ├── docker-compose.yml   # Service orchestration
 └── index.js             # Application entry point
 ```
+📘 API Documentation
+- This project includes interactive API documentation using Swagger UI.
+
+🧪 Swagger UI
+- The API docs are automatically generated using swagger-jsdoc and served using swagger-ui-express.
+- URL: http://localhost:4000/api-docs (or your configured port)
+
 
 ⚙️ Getting Started
 - Prerequisites

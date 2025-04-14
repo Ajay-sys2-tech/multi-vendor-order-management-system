@@ -125,6 +125,8 @@ router.get("/:id", async (req, res) => {
  *  post:
  *    summary: Create a new product
  *    tags: [Product]
+ *    security:
+ *      - bearerAuth: []
  *    requestBody:
  *      required: true
  *      content:
@@ -176,6 +178,8 @@ router.post("/", vendorAuth, validate(productSchema), async (req, res) => {
  *   put:
  *     summary: Update a product by ID
  *     tags: [Product]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - name: id
  *         in: path
@@ -242,6 +246,8 @@ router.put("/:id",vendorAuth, validate(updateProductSchema), async (req, res) =>
  *   delete:
  *     summary: Delete a product by ID
  *     tags: [Product]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - name: id
  *         in: path
