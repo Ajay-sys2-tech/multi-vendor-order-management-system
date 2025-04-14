@@ -7,7 +7,48 @@ const { productSchema, updateProductSchema } = require("../schema/schema");
 
 const router = express.Router();
 
-//get all products
+/**
+ * @swagger
+ * tags:
+ *   name: Product
+ *   description: Product management
+ */
+
+/**
+ * @swagger
+ * /products:
+ *  get:
+ *    summary: Get all products
+ *    tags: [Product]
+ *    responses:
+ *      200:
+ *        description: A list of products
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                type: object
+ *                properties:
+ *                  id:
+ *                    type: string
+ *  
+ *                  name:
+ *                    type: string
+ *                  price:
+ *                    type: number
+ *                  stock:
+ *                    type: number
+ *                  category:
+ *                    type: string
+ *                  vendorId:
+ *                    type: string
+ *      404:
+ *        description: No products found
+ *      500:
+ *        description: Internal server error
+ */
+
 router.get("/", async (req, res) => {
     try {
         const products = await getProducts();
@@ -22,7 +63,44 @@ router.get("/", async (req, res) => {
 });
 
 
-//get a product by id
+/**
+ * @swagger
+ * /products/{id}:
+ *  get:
+ *    summary: Get a product by ID
+ *    tags: [Product]
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        required: true
+ *        description: The ID of the product to retrieve
+ *        schema:
+ *          type: string
+ *    responses:
+ *      200:
+ *       description: A product object
+ *      content:
+ *       application/json:
+ *         schema:
+ *           type: object
+ *           properties:
+ *             id:
+ *               type: string
+ *             name:
+ *               type: string
+ *             price:
+ *               type: number
+ *             stock:
+ *               type: number
+ *             category:
+ *               type: string
+ *             vendorId:
+ *               type: string
+ *    404:
+ *      description: Product not found
+ *    500:
+ *      description: Internal server error
+ */
 router.get("/:id", async (req, res) => {
     const productId = req.params.id;
     try {
@@ -41,7 +119,43 @@ router.get("/:id", async (req, res) => {
 
 
 
-//add a product
+/**
+ * @swagger
+ * /products:
+ *  post:
+ *    summary: Create a new product
+ *    tags: [Product]
+ *    security:
+ *      - bearerAuth: []
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *              price:
+ *                type: number
+ *              stock:
+ *                type: number
+ *              category:
+ *                type: string
+ *            required:
+ *              - name
+ *              - price
+ *              - stock
+ *              - category
+ *
+ *    responses:
+ *      201:
+ *        description: Product created successfully
+ *      400:
+ *        description: Bad request (validation error)
+ *      500:
+ *        description: Internal server error
+ */
 router.post("/", vendorAuth, validate(productSchema), async (req, res) => {
     try {
         const { name, price, stock, category, } = req.body;
@@ -58,8 +172,52 @@ router.post("/", vendorAuth, validate(productSchema), async (req, res) => {
 });
 
 
+/**
+ * @swagger
+ * /products/{id}:
+ *   put:
+ *     summary: Update a product by ID
+ *     tags: [Product]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The ID of the product to update
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               price:
+ *                 type: number
+ *               stock:
+ *                 type: number
+ *               category:
+ *                 type: string
+ *             required:
+ *               - name
+ *               - price
+ *               - stock
+ *               - category
+ *     responses:
+ *       200:
+ *         description: Product updated successfully
+ *       400:
+ *         description: Bad request (validation error)
+ *       404:
+ *         description: Product not found
+ *       500:
+ *         description: Internal server error
+ */
 
-//update a product
 router.put("/:id",vendorAuth, validate(updateProductSchema), async (req, res) => {
     const productId = req.params.id;
     try {
@@ -82,7 +240,29 @@ router.put("/:id",vendorAuth, validate(updateProductSchema), async (req, res) =>
 
 
 
-//delete a product
+/**
+ * @swagger
+ * /products/{id}:
+ *   delete:
+ *     summary: Delete a product by ID
+ *     tags: [Product]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The ID of the product to delete
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Product deleted successfully
+ *       404:
+ *         description: Product not found
+ *       500:
+ *         description: Internal server error
+ */
 router.delete("/:id", vendorAuth, async (req, res) => {
     const productId = req.params.id;
     try {
