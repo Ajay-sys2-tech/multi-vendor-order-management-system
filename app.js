@@ -13,10 +13,6 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/welcome", (req, res) => {
-    res.send("Welcome to Multi-Vendor Order Management System!");
-})
-
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/carts", cartRoutes);
@@ -25,6 +21,10 @@ app.use("/admin", adminRoutes);
 app.use("/vendor", vendorRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.get("/", (req, res) => {
+    res.send("Welcome to Multi-Vendor Order Management System!");
+})
 
 
 module.exports = app;
