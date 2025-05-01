@@ -1,4 +1,4 @@
-🛍️ Multi-Vendor Order Management System API  
+# 🛍️ Multi-Vendor Order Management System API # 
 
 A scalable and modular Node.js + Express API for managing a multi-vendor e-commerce platform. This backend service handles vendor onboarding, customer orders, order splitting, and real-time analytics for vendors and administrators.
 
